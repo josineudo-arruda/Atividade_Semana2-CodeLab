@@ -1,4 +1,4 @@
-package br.com.xavecoding.regescweb.controllers.models;
+package br.com.xavecoding.regescweb.models;
 
 public enum StatusProfessor {
     ATIVO, INATIVO, APOSENTADO, AFASTADO

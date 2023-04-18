@@ -1,4 +1,4 @@
-package br.com.xavecoding.regescweb.controllers.models;
+package br.com.xavecoding.regescweb.models;
 
 import jakarta.persistence.*;
 
@@ -16,7 +16,11 @@ public class Professor {
     private StatusProfessor statusProfessor;
 
     public Professor() {}
-    public Professor(long id, String nome, BigDecimal salario, StatusProfessor statusProfessor) {}
+    public Professor( String nome, BigDecimal salario, StatusProfessor statusProfessor) {
+        this.nome = nome;
+        this.salario = salario;
+        this.statusProfessor = statusProfessor;
+    }
 
     public long getId() {
         return id;
