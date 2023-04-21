@@ -1,5 +1,6 @@
 package br.com.xavecoding.regescweb.controllers;
 
+import br.com.xavecoding.regescweb.dto.RequisicaoNovoProfessor;
 import br.com.xavecoding.regescweb.models.Professor;
 import br.com.xavecoding.regescweb.models.StatusProfessor;
 import br.com.xavecoding.regescweb.repositories.ProfessorRepository;
@@ -31,9 +32,11 @@ public class ProfessorController {
         return mv;
     }
 
-    @PostMapping("/professores") // risco de fraude no envio de dados 
-    public String create(Professor professor) { //chama o set nome de todos os atributos
-        System.out.println(professor);
+    @PostMapping("/professores")
+    public String create(RequisicaoNovoProfessor requisicao) { //chama o set nome de todos os atributos
+        Professor professor = requisicao.toProfessor();
+        this.professorRepository.save(professor); //inserção no bdd
         return "redirect:/professores";
     }
 }
+
