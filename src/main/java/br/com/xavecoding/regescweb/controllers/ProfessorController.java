@@ -6,6 +6,7 @@ import br.com.xavecoding.regescweb.repositories.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -28,5 +29,11 @@ public class ProfessorController {
         ModelAndView mv = new ModelAndView("professores/new");
         mv.addObject("statusProfessor", StatusProfessor.values());
         return mv;
+    }
+
+    @PostMapping("/professores") // risco de fraude no envio de dados 
+    public String create(Professor professor) { //chama o set nome de todos os atributos
+        System.out.println(professor);
+        return "redirect:/professores";
     }
 }
