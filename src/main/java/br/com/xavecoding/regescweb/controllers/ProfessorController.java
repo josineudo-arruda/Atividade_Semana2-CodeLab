@@ -4,8 +4,10 @@ import br.com.xavecoding.regescweb.dto.RequisicaoNovoProfessor;
 import br.com.xavecoding.regescweb.models.Professor;
 import br.com.xavecoding.regescweb.models.StatusProfessor;
 import br.com.xavecoding.regescweb.repositories.ProfessorRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,10 +35,14 @@ public class ProfessorController {
     }
 
     @PostMapping("/professores")
-    public String create(RequisicaoNovoProfessor requisicao) { //chama o set nome de todos os atributos
-        Professor professor = requisicao.toProfessor();
-        this.professorRepository.save(professor); //inserção no bdd
-        return "redirect:/professores";
+    public String create(@Valid RequisicaoNovoProfessor requisicao, BindingResult bindingResult) {//chama o set nome de todos os atributos
+        if (bindingResult.hasErrors()) {
+            return "redirect:/professor/new";
+        } else {
+            Professor professor = requisicao.toProfessor();
+            this.professorRepository.save(professor); //inserção no bdd
+            return "redirect:/professores";
+        }
     }
 }
 

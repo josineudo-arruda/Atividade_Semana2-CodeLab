@@ -2,12 +2,19 @@ package br.com.xavecoding.regescweb.dto;
 
 import br.com.xavecoding.regescweb.models.Professor;
 import br.com.xavecoding.regescweb.models.StatusProfessor;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 
 // classe dto Data Transfer Object
 public class RequisicaoNovoProfessor {
+    @NotBlank
+    @NotNull
     private String nome;
+    @NotNull
+    @DecimalMin("0.0")
     private BigDecimal salario;
     private StatusProfessor statusProfessor;
 
