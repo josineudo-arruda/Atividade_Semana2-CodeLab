@@ -42,15 +42,15 @@ public class Professor {
         return salario;
     }
 
+    public void setSalario(BigDecimal salario) {
+        this.salario = salario;
+    }
+
     public StatusProfessor getStatusProfessor() {
         return statusProfessor;
     }
 
     public void setStatusProfessor(StatusProfessor statusProfessor) {
         this.statusProfessor = statusProfessor;
-    }
-
-    public void setSalario(BigDecimal salario) {
-        this.salario = salario;
     }
 }
