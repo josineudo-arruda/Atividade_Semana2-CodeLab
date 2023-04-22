@@ -3,7 +3,15 @@
 <head th:replace="~{fragmentos :: head('Lista de professores')}"></head>
 <body>
   <header th:replace="~{fragmentos :: header('Lista de professores')}"></header>
-  <div class="container">
+  <div class="container mb-4">
+    <div class="col-12">
+        <span th:styleappend="${(param.erro == null || param.mensagem == null) ? 'display: none;' : ''}"
+              th:classappend="${(param.erro != null && param.erro) ? 'error-message' : 'success-message'}"
+              th:text="${param.mensagem != null ? param.mensagem : ''}">Uma mensagem bem legal!</span>
+    </div>
+  </div>
+
+  <div class="container mt-4">
     <div class="row">
       <div class="col-12">
         <table class="table table-hover">
@@ -26,7 +34,7 @@
             <td class="col-2" th:text="${professor.statusProfessor.toString()}">STATUS</td>
             <td class="col-1"><a th:href="@{/professores/{professorId}(professorId = ${professor.id})}">Detalhes</a></td>
             <td class="col-1"><a th:href="@{/professores/{professorId}/edit(professorId = ${professor.id})}">Editar</a></td>
-            <td class="col-1"><a href="#">Deletar</a></td>
+            <td class="col-1"><a th:href="@{/professores/{professorId}/delete(professorId = ${professor.id})}">Deletar</a></td>
           </tr>
           </tbody>
         </table>
