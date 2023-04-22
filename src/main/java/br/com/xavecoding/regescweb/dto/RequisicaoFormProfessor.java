@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 // classe dto Data Transfer Object
-public class RequisicaoNovoProfessor {
+public class RequisicaoFormProfessor {
     @NotBlank
     @NotNull
     private String nome;
@@ -42,12 +42,11 @@ public class RequisicaoNovoProfessor {
         this.statusProfessor = statusProfessor;
     }
 
-    public Professor toProfessor(){
+    public Professor toProfessor() {
         Professor professor = new Professor();
         professor.setNome(this.nome);
         professor.setSalario(this.salario);
         professor.setStatusProfessor(this.statusProfessor);
-
         return professor;
     }
 
