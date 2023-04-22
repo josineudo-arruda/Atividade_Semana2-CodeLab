@@ -2,8 +2,7 @@ package br.com.xavecoding.regescweb.models;
 
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
-
+@Entity
 public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,9 +14,9 @@ public class Curso {
     @Enumerated(EnumType.STRING)
     private TipoCurso tipoCurso;
 
-    private Curso() {}
+    public Curso() {}
 
-    private Curso(String nome, String descricao, TipoCurso tipoCurso) {
+    public Curso(String nome, String descricao, TipoCurso tipoCurso) {
         this.nome = nome;
         this.descricao = descricao;
         this.tipoCurso = tipoCurso;
